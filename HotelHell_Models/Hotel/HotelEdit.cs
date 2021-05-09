@@ -5,48 +5,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelHell_Data
+namespace HotelHell_Models.Hotel
 {
-    public class Hotel
+    public class HotelEdit
     {
-        [Key]
         public int Id { get; set; }
 
-        [Required]
         public string Name { get; set; }
 
-        [Required]
+        [Display(Name = "Building Number")]
         public int BuildingNumber { get; set; }
 
-        [Required]
+        [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
 
-        [Required]
         public string City { get; set; }
 
-        [Required]
         public string State { get; set; }
 
-        [Required]
+        [Display(Name = "Zip Code")]
         public int ZipCode { get; set; }
 
-        [Required]
+        [Display(Name = "Number Of Rooms Available")]
         public int NumOfRoomsAvail { get; set; }
-
-        public bool AnyVacancies
-        {
-            get
-            {
-                return NumOfRoomsAvail > 0;
-            }
-        }
-
-        [Required]
-        public DateTimeOffset CreatedAt { get; set; }
-
-        public DateTimeOffset? ModifiedAt { get; set; }
-
-
-        public virtual ICollection<Room> Rooms { get; set; }
     }
 }
