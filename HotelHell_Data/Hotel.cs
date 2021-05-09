@@ -29,6 +29,12 @@ namespace HotelHell_Data
             }
         }
 
+        [Required]
+        public DateTimeOffset CreatedAt { get; set; }
+
+        public DateTimeOffset? ModifiedAt { get; set; }
+
+
         public virtual ICollection<Room> Rooms { get; set; }
     }
 }
