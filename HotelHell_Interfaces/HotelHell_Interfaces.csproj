@@ -46,5 +46,11 @@
     <Compile Include="IRoomService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HotelHell_Models\HotelHell_Models.csproj">
+      <Project>{A3B6484B-4B5C-40BA-B330-8179DE53C54B}</Project>
+      <Name>HotelHell_Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

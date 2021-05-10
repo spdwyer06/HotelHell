@@ -1,0 +1,58 @@
+﻿@model HotelHell_Models.Customer.CustomerDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CustomerDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountCreatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountCreatedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountModifiedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccountModifiedAt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { customerId = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
