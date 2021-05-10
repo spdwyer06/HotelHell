@@ -11,6 +11,13 @@ namespace HotelHell_Services
 {
     public class HotelService : IHotelService
     {
+        public Guid _userId;
+
+        public HotelService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         public async Task<bool> CreateHotelAsync(HotelCreate model)
         {
             var hotel = new Hotel
