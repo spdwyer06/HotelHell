@@ -122,7 +122,7 @@ namespace HotelHell_Web.Controllers
 
         // POST: Room/Delete/5
         [HttpPost]
-        public async Task<ActionResult> DeleteHotel(int roomId)
+        public async Task<ActionResult> DeleteRoom(int roomId)
         {
             try
             {
