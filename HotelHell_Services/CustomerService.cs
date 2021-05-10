@@ -11,6 +11,13 @@ namespace HotelHell_Services
 {
     public class CustomerService : ICustomerService
     {
+        private readonly Guid _userId;
+
+        public CustomerService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         public async Task<bool> CreateCustomerAsync(CustomerCreate model)
         {
             var customer = new Customer
