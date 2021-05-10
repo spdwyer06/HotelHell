@@ -1,0 +1,40 @@
+﻿@model IEnumerable<HotelHell_Models.Room.RoomListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumOfBeds)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HotelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumOfBeds)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { roomId = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { roomId = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { roomId = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

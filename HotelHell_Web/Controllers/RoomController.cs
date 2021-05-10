@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace HotelHell_Web.Controllers
 {
+    [Authorize]
     public class RoomController : Controller
     {
         // GET: Room
