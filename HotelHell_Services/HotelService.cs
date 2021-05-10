@@ -48,7 +48,7 @@ namespace HotelHell_Services
                 {
                     Id = hotel.Id,
                     Name = hotel.Name,
-                    AnyVacancies = hotel.AnyVacancies
+                    //AnyVacancies = hotel.AnyVacancies
                 });
 
                 return query.ToArray();

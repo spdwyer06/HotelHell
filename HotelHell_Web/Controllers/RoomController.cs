@@ -16,7 +16,10 @@ namespace HotelHell_Web.Controllers
         // GET: Room
         public ActionResult Index()
         {
-            return View();
+            var service = CreateRoomService();
+            var model = service.GetAllRooms();
+
+            return View(model);
         }
 
         // GET: Room/Details/5
@@ -115,13 +118,15 @@ namespace HotelHell_Web.Controllers
         public async Task<ActionResult> Delete(int roomId)
         {
             var service = CreateRoomService();
-            var model = await service.DeleteRoomAsync(roomId);
+            var model = await service.GetRoomByIdAsync(roomId);
 
             return View(model);
         }
 
         // POST: Room/Delete/5
         [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteRoom(int roomId)
         {
             try
