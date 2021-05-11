@@ -90,6 +90,44 @@
             @Html.DisplayFor(model => model.ModifiedAt)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Rooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rooms.Count)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Rooms.SingleOrDefault().RoomNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rooms.SingleOrDefault().RoomNumber)
+        </dd>*@
+
+        <dt>
+            Room Numbers
+        </dt>
+
+        
+
+        @foreach (var room in Model.Rooms)
+        {
+            @*<dd>
+                @Html.DisplayFor(model => model.Rooms.Count)
+            </dd>*@
+
+            <dd>
+               @room.RoomNumber
+            </dd>
+
+            <dd>
+                @Html.Display(room.RoomNumber.ToString())
+            </dd>
+
+        }
+
     </dl>
 </div>
 <p>

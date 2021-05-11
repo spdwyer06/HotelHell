@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HotelHell_Data;
 
 namespace HotelHell_Models.Hotel
 {
@@ -11,6 +12,7 @@ namespace HotelHell_Models.Hotel
     {
         public int Id { get; set; }
 
+        [Display(Name = "Hotel Name")]
         public string Name { get; set; }
 
         [Display(Name = "Building Number")]
@@ -29,7 +31,7 @@ namespace HotelHell_Models.Hotel
         [Display(Name = "Number Of Rooms Available")]
         public int NumOfRoomsAvail { get; set; }
 
-        [Display(Name = "Any Vacancies")]
+        [Display(Name = "Any Vacancies?")]
         public bool AnyVacancies { get; set; }
 
         [Display(Name = "Created At")]
@@ -37,5 +39,7 @@ namespace HotelHell_Models.Hotel
 
         [Display(Name = "Modified At")]
         public DateTimeOffset? ModifiedAt { get; set; }
+
+        public virtual ICollection<HotelHell_Data.Room> Rooms { get; set; }
     }
 }

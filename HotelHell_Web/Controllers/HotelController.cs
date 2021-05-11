@@ -37,33 +37,53 @@ namespace HotelHell_Web.Controllers
             return View();
         }
 
-        // POST: Hotel/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(HotelCreate model)
+        public ActionResult Create(HotelCreate model)
         {
-            try
+            if (!ModelState.IsValid)
+                return View(model);
+
+            var service = CreateHotelService();
+
+            if (!service.CreateHotel(model))
             {
-                if (!ModelState.IsValid)
-                    return View(model);
+                ModelState.AddModelError("", "Hotel could not be created.");
 
-                var service = CreateHotelService();
-
-                if (!await service.CreateHotelAsync(model))
-                {
-                    ModelState.AddModelError("", "Hotel could not be created.");
-
-                    return View(model);
-                }
-
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
                 return View(model);
             }
+
+
+            return RedirectToAction("Index");
         }
+
+        // POST: Hotel/Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Create(HotelCreate model)
+        //{
+        //    try
+        //    {
+        //        if (!ModelState.IsValid)
+        //            return View(model);
+
+        //        var service = CreateHotelService();
+
+        //        if (!await service.CreateHotelAsync(model))
+        //        {
+        //            ModelState.AddModelError("", "Hotel could not be created.");
+
+        //            return View(model);
+        //        }
+
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View(model);
+        //    }
+        //}
 
         // GET: Hotel/Edit/5
         public async Task<ActionResult> Edit(int hotelId)
@@ -129,6 +149,8 @@ namespace HotelHell_Web.Controllers
 
         // POST: Hotel/Delete/5
         [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteHotel(int hotelId)
         {
             try
