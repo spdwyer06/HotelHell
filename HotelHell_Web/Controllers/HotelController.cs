@@ -37,53 +37,53 @@ namespace HotelHell_Web.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(HotelCreate model)
-        {
-            if (!ModelState.IsValid)
-                return View(model);
-
-            var service = CreateHotelService();
-
-            if (!service.CreateHotel(model))
-            {
-                ModelState.AddModelError("", "Hotel could not be created.");
-
-                return View(model);
-            }
-
-
-            return RedirectToAction("Index");
-        }
-
-        // POST: Hotel/Create
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public async Task<ActionResult> Create(HotelCreate model)
+        //public ActionResult Create(HotelCreate model)
         //{
-        //    try
+        //    if (!ModelState.IsValid)
+        //        return View(model);
+
+        //    var service = CreateHotelService();
+
+        //    if (!service.CreateHotel(model))
         //    {
-        //        if (!ModelState.IsValid)
-        //            return View(model);
+        //        ModelState.AddModelError("", "Hotel could not be created.");
 
-        //        var service = CreateHotelService();
-
-        //        if (!await service.CreateHotelAsync(model))
-        //        {
-        //            ModelState.AddModelError("", "Hotel could not be created.");
-
-        //            return View(model);
-        //        }
-
-
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
         //        return View(model);
         //    }
+
+
+        //    return RedirectToAction("Index");
         //}
+
+        // POST: Hotel/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(HotelCreate model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return View(model);
+
+                var service = CreateHotelService();
+
+                if (!await service.CreateHotelAsync(model))
+                {
+                    ModelState.AddModelError("", "Hotel could not be created.");
+
+                    return View(model);
+                }
+
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View(model);
+            }
+        }
 
         // GET: Hotel/Edit/5
         public async Task<ActionResult> Edit(int hotelId)

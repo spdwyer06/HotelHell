@@ -30,6 +30,8 @@ namespace HotelHell_Services
 
             using (var db = new ApplicationDbContext())
             {
+                //var hotel = db.Hotels.Single(h => h.Name == )
+
                 db.Rooms.Add(room);
 
                 return await db.SaveChangesAsync() == 1;

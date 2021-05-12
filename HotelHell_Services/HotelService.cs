@@ -18,27 +18,27 @@ namespace HotelHell_Services
             _userId = userId;
         }
 
-        public bool CreateHotel(HotelCreate model)
-        {
-            var hotel = new Hotel
-            {
-                Name = model.Name,
-                BuildingNumber = model.BuildingNumber,
-                StreetAddress = model.StreetAddress,
-                City = model.City,
-                State = model.State,
-                ZipCode = model.ZipCode,
-                NumOfRoomsAvail = model.NumOfRoomsAvail,
-                CreatedAt = DateTimeOffset.UtcNow
-            };
+        //public bool CreateHotel(HotelCreate model)
+        //{
+        //    var hotel = new Hotel
+        //    {
+        //        Name = model.Name,
+        //        BuildingNumber = model.BuildingNumber,
+        //        StreetAddress = model.StreetAddress,
+        //        City = model.City,
+        //        State = model.State,
+        //        ZipCode = model.ZipCode,
+        //        NumOfRoomsAvail = model.NumOfRoomsAvail,
+        //        CreatedAt = DateTimeOffset.UtcNow
+        //    };
 
-            using (var db = new ApplicationDbContext())
-            {
-                db.Hotels.Add(hotel);
+        //    using (var db = new ApplicationDbContext())
+        //    {
+        //        db.Hotels.Add(hotel);
 
-                return db.SaveChanges() == 1;
-            }
-        }
+        //        return db.SaveChanges() == 1;
+        //    }
+        //}
 
         public async Task<bool> CreateHotelAsync(HotelCreate model)
         {

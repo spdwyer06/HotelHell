@@ -1,4 +1,5 @@
-﻿using HotelHell_Models.Room;
+﻿using HotelHell_Data;
+using HotelHell_Models.Room;
 using HotelHell_Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -13,6 +14,8 @@ namespace HotelHell_Web.Controllers
     [Authorize]
     public class RoomController : Controller
     {
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
+
         // GET: Room
         public ActionResult Index()
         {
@@ -32,9 +35,22 @@ namespace HotelHell_Web.Controllers
         }
 
         // GET: Room/Create
+        //[Authorize(Roles = "Admin, Manager")]
         public ActionResult Create()
         {
+            ViewBag.HotelId = new SelectList(_db.Hotels, "Id", "Id");
+            ViewBag.HotelName = new SelectList(_db.Hotels, "Name", "Name");
+
             return View();
+
+            //using (var db = new ApplicationDbContext())
+            //{
+            //    ViewBag.HotelId = new SelectList(db.Hotels, "Id", "Id");
+            //    ViewBag.HotelName = new SelectList(db.Hotels, "Name", "Name");
+
+            //    return View();
+            //}
+
         }
 
         // POST: Room/Create
