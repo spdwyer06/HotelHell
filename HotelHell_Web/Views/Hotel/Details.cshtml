@@ -11,6 +11,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
 
@@ -110,7 +118,7 @@
             Room Numbers
         </dt>
 
-        
+
 
         @foreach (var room in Model.Rooms)
         {
@@ -119,7 +127,7 @@
             </dd>*@
 
             <dd>
-               @room.RoomNumber
+                @room.RoomNumber
             </dd>
 
             <dd>
