@@ -64,7 +64,9 @@ namespace HotelHell_Services
                 {
                     Id = reservation.Id,
                     HotelName = reservation.Room.Hotel.Name,
+                    RoomId = reservation.RoomId,
                     RoomNumber = reservation.Room.RoomNumber,
+                    CustomerId = reservation.CustomerId,
                     CustomerFirstName = reservation.Customer.FirstName,
                     CustomerLastName = reservation.Customer.LastName
                 };
