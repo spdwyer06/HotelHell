@@ -16,7 +16,10 @@ namespace HotelHell_Web.Controllers
         // GET: Hotel
         public ActionResult Index()
         {
-            return View();
+            var service = CreateHotelService();
+            var model = service.GetAllHotels();
+
+            return View(model);
         }
 
         // GET: Hotel/Details/5
@@ -33,6 +36,26 @@ namespace HotelHell_Web.Controllers
         {
             return View();
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create(HotelCreate model)
+        //{
+        //    if (!ModelState.IsValid)
+        //        return View(model);
+
+        //    var service = CreateHotelService();
+
+        //    if (!service.CreateHotel(model))
+        //    {
+        //        ModelState.AddModelError("", "Hotel could not be created.");
+
+        //        return View(model);
+        //    }
+
+
+        //    return RedirectToAction("Index");
+        //}
 
         // POST: Hotel/Create
         [HttpPost]
@@ -119,13 +142,15 @@ namespace HotelHell_Web.Controllers
         public async Task<ActionResult> Delete(int hotelId)
         {
             var service = CreateHotelService();
-            var model = await service.DeleteHotelAsync(hotelId);
+            var model = await service.GetHotelByIdAsync(hotelId);
 
             return View(model);
         }
 
         // POST: Hotel/Delete/5
         [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteHotel(int hotelId)
         {
             try

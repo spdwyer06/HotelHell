@@ -10,6 +10,7 @@ namespace HotelHell_Models.Room
     public class RoomCreate
     {
         [Required]
+        [Display(Name = "Hotel Id")]
         public int HotelId { get; set; }
 
         [Required]

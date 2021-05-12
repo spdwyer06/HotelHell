@@ -33,13 +33,7 @@ namespace HotelHell_Data
         [Required]
         public int NumOfRoomsAvail { get; set; }
 
-        public bool AnyVacancies
-        {
-            get
-            {
-                return NumOfRoomsAvail > 0;
-            }
-        }
+        public bool AnyVacancies => NumOfRoomsAvail > 0;
 
         [Required]
         public DateTimeOffset CreatedAt { get; set; }

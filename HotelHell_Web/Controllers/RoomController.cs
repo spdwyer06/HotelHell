@@ -1,4 +1,5 @@
-﻿using HotelHell_Models.Room;
+﻿using HotelHell_Data;
+using HotelHell_Models.Room;
 using HotelHell_Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -13,10 +14,15 @@ namespace HotelHell_Web.Controllers
     [Authorize]
     public class RoomController : Controller
     {
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
+
         // GET: Room
         public ActionResult Index()
         {
-            return View();
+            var service = CreateRoomService();
+            var model = service.GetAllRooms();
+
+            return View(model);
         }
 
         // GET: Room/Details/5
@@ -29,9 +35,22 @@ namespace HotelHell_Web.Controllers
         }
 
         // GET: Room/Create
+        //[Authorize(Roles = "Admin, Manager")]
         public ActionResult Create()
         {
+            ViewBag.HotelId = new SelectList(_db.Hotels, "Id", "Id");
+            ViewBag.HotelName = new SelectList(_db.Hotels, "Name", "Name");
+
             return View();
+
+            //using (var db = new ApplicationDbContext())
+            //{
+            //    ViewBag.HotelId = new SelectList(db.Hotels, "Id", "Id");
+            //    ViewBag.HotelName = new SelectList(db.Hotels, "Name", "Name");
+
+            //    return View();
+            //}
+
         }
 
         // POST: Room/Create
@@ -115,13 +134,15 @@ namespace HotelHell_Web.Controllers
         public async Task<ActionResult> Delete(int roomId)
         {
             var service = CreateRoomService();
-            var model = await service.DeleteRoomAsync(roomId);
+            var model = await service.GetRoomByIdAsync(roomId);
 
             return View(model);
         }
 
         // POST: Room/Delete/5
         [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteRoom(int roomId)
         {
             try

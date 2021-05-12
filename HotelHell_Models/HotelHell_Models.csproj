@@ -51,11 +51,20 @@
     <Compile Include="Hotel\HotelEdit.cs" />
     <Compile Include="Hotel\HotelListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservation\ReservationCreate.cs" />
+    <Compile Include="Reservation\ReservationDetail.cs" />
+    <Compile Include="Reservation\ReservationEdit.cs" />
+    <Compile Include="Reservation\ReservationListItem.cs" />
     <Compile Include="Room\RoomCreate.cs" />
     <Compile Include="Room\RoomDetail.cs" />
     <Compile Include="Room\RoomEdit.cs" />
     <Compile Include="Room\RoomListItem.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\HotelHell_Data\HotelHell_Data.csproj">
+      <Project>{86d91319-7610-46dd-b5ed-067352e77a7b}</Project>
+      <Name>HotelHell_Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

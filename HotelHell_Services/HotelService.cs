@@ -11,12 +11,34 @@ namespace HotelHell_Services
 {
     public class HotelService : IHotelService
     {
-        public Guid _userId;
+        private readonly Guid _userId;
 
         public HotelService(Guid userId)
         {
             _userId = userId;
         }
+
+        //public bool CreateHotel(HotelCreate model)
+        //{
+        //    var hotel = new Hotel
+        //    {
+        //        Name = model.Name,
+        //        BuildingNumber = model.BuildingNumber,
+        //        StreetAddress = model.StreetAddress,
+        //        City = model.City,
+        //        State = model.State,
+        //        ZipCode = model.ZipCode,
+        //        NumOfRoomsAvail = model.NumOfRoomsAvail,
+        //        CreatedAt = DateTimeOffset.UtcNow
+        //    };
+
+        //    using (var db = new ApplicationDbContext())
+        //    {
+        //        db.Hotels.Add(hotel);
+
+        //        return db.SaveChanges() == 1;
+        //    }
+        //}
 
         public async Task<bool> CreateHotelAsync(HotelCreate model)
         {
@@ -48,7 +70,7 @@ namespace HotelHell_Services
                 {
                     Id = hotel.Id,
                     Name = hotel.Name,
-                    AnyVacancies = hotel.AnyVacancies
+                    AnyVacancies = hotel.NumOfRoomsAvail > 0
                 });
 
                 return query.ToArray();
@@ -71,12 +93,13 @@ namespace HotelHell_Services
                     BuildingNumber = hotel.BuildingNumber,
                     StreetAddress = hotel.StreetAddress,
                     City = hotel.City,
-                    State = hotel.State,
+                    State = hotel.State.ToUpper(),
                     ZipCode = hotel.ZipCode,
                     NumOfRoomsAvail = hotel.NumOfRoomsAvail,
                     AnyVacancies = hotel.AnyVacancies,
                     CreatedAt = hotel.CreatedAt,
-                    ModifiedAt = hotel.ModifiedAt
+                    ModifiedAt = hotel.ModifiedAt,
+                    Rooms = hotel.Rooms
                 };
             }
 
