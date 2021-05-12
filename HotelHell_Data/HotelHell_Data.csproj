@@ -101,8 +101,17 @@
     <Compile Include="Migrations\202105111859031_RemoveTestHotel.Designer.cs">
       <DependentUpon>202105111859031_RemoveTestHotel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105121640106_AddReservationTable.cs" />
+    <Compile Include="Migrations\202105121640106_AddReservationTable.Designer.cs">
+      <DependentUpon>202105121640106_AddReservationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105121641093_AddReservation.cs" />
+    <Compile Include="Migrations\202105121641093_AddReservation.Designer.cs">
+      <DependentUpon>202105121641093_AddReservation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservation.cs" />
     <Compile Include="Room.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +151,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105111859031_RemoveTestHotel.resx">
       <DependentUpon>202105111859031_RemoveTestHotel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105121640106_AddReservationTable.resx">
+      <DependentUpon>202105121640106_AddReservationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105121641093_AddReservation.resx">
+      <DependentUpon>202105121641093_AddReservation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
