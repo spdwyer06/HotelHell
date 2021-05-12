@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ICustomerService.cs" />
     <Compile Include="IHotelService.cs" />
+    <Compile Include="IReservationService.cs" />
     <Compile Include="IRoomService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
