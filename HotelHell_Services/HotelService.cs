@@ -11,7 +11,7 @@ namespace HotelHell_Services
 {
     public class HotelService : IHotelService
     {
-        public Guid _userId;
+        private readonly Guid _userId;
 
         public HotelService(Guid userId)
         {

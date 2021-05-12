@@ -8,5 +8,6 @@ namespace HotelHell_Models.Reservation
 {
     public class ReservationEdit : ReservationCreate
     {
+        public int Id { get; set; }
     }
 }
