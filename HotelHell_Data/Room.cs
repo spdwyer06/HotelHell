@@ -23,6 +23,8 @@ namespace HotelHell_Data
         [Required]
         public int NumOfBeds { get; set; }
 
+        public bool Available { get; set; } = true;
+
         [Required]
         public DateTimeOffset CreatedAt { get; set; }
 

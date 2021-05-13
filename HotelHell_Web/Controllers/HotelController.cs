@@ -167,6 +167,15 @@ namespace HotelHell_Web.Controllers
             }
         }
 
+        public ActionResult RedirectToRoomCreate(int hotelId)
+        {
+            return RedirectToAction("Create", "Room", new { hotelId });
+        }
+
+        public ActionResult RedirectToHotelRooms(int hotelId)
+        {
+            return RedirectToAction("HotelRoomsIndex", "Room", new { hotelId });
+        }
 
 
         private HotelService CreateHotelService()

@@ -1,4 +1,5 @@
-﻿using HotelHell_Models.Reservation;
+﻿using HotelHell_Data;
+using HotelHell_Models.Reservation;
 using HotelHell_Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -13,6 +14,8 @@ namespace HotelHell_Web.Controllers
     [Authorize]
     public class ReservationController : Controller
     {
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
+
         // GET: Reservation
         public ActionResult Index()
         {
@@ -34,6 +37,9 @@ namespace HotelHell_Web.Controllers
         // GET: Reservation/Create
         public ActionResult Create()
         {
+            //ViewBag.CustomerId = new SelectList(_db.Customers, "Id", "Id");
+            //ViewBag.RoomId = new SelectList(_db.Rooms, "Id", "Id");
+
             return View();
         }
 
@@ -123,19 +129,38 @@ namespace HotelHell_Web.Controllers
         }
 
         // POST: Reservation/Delete/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Delete(int reservationId, ReservationDetail model)
+        //{
+        //    try
+        //    {
+        //        if (model.Id != reservationId)
+        //        {
+        //            ModelState.AddModelError("", "Id mismatch.");
+
+        //            return View(model);
+        //        }
+
+        //        var service = CreateReservationService();
+
+        //        await service.DeleteReservationAsync(reservationId);
+
+        //        return RedirectToAction("Index");
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
+
         [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int reservationId, ReservationDetail model)
+        public async Task<ActionResult> DeleteReservation(int reservationId)
         {
             try
             {
-                if (model.Id != reservationId)
-                {
-                    ModelState.AddModelError("", "Id mismatch.");
-
-                    return View(model);
-                }
-
                 var service = CreateReservationService();
 
                 await service.DeleteReservationAsync(reservationId);

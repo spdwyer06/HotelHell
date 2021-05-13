@@ -8,6 +8,7 @@
 
 <div>
     <h4>HotelDetail</h4>
+    @Html.ActionLink("View Rooms", "RedirectToHotelRooms" , new { hotelId = Model.Id })
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -80,6 +81,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.AnyVacancies)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumRoomsAvail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumRoomsAvail)
         </dd>
 
         <dt>

@@ -13,6 +13,11 @@
 
     <div class="form-horizontal">
         <h4>HotelEdit</h4>
+        @*<a href="@Url.Action("Create", "Room", new { hotelId = Model.Id })">Add A Room</a>*@
+        @*<a href="@Url.Action("Create", "Room", ViewData["hotelId"] = Model.Id)">Add A Room</a>*@
+        @Html.ActionLink("Add A Room", "RedirectToRoomCreate", new { hotelId = Model.Id })
+        @*<a href="@Url.Action("Create", "Room", TempData["hotelId"] = Model.Id)">Add A Room</a>*@
+        @*<p>@Html.ActionLink("Add A Room", "Create", "Room", new { hotelId = Model.Id })</p>*@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)

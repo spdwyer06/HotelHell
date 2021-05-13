@@ -30,7 +30,12 @@ namespace HotelHell_Services
             {
                 db.Reservations.Add(reservation);
 
-                return await db.SaveChangesAsync() == 1;
+                var room = await db.Rooms.FindAsync(model.RoomId);
+
+                room.Available = false;
+
+                //return await db.SaveChangesAsync() == 1;
+                return await db.SaveChangesAsync() == 2;
             }
         }
 
@@ -64,7 +69,9 @@ namespace HotelHell_Services
                 {
                     Id = reservation.Id,
                     HotelName = reservation.Room.Hotel.Name,
+                    RoomId = reservation.RoomId,
                     RoomNumber = reservation.Room.RoomNumber,
+                    CustomerId = reservation.CustomerId,
                     CustomerFirstName = reservation.Customer.FirstName,
                     CustomerLastName = reservation.Customer.LastName
                 };

@@ -97,6 +97,7 @@ namespace HotelHell_Services
                     ZipCode = hotel.ZipCode,
                     NumOfRoomsAvail = hotel.NumOfRoomsAvail,
                     AnyVacancies = hotel.AnyVacancies,
+                    NumRoomsAvail = hotel.NumRoomsAvail,
                     CreatedAt = hotel.CreatedAt,
                     ModifiedAt = hotel.ModifiedAt,
                     Rooms = hotel.Rooms

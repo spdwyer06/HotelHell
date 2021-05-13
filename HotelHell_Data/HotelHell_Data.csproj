@@ -109,6 +109,10 @@
     <Compile Include="Migrations\202105121641093_AddReservation.Designer.cs">
       <DependentUpon>202105121641093_AddReservation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105122020588_AddPropsForRoomAvailability.cs" />
+    <Compile Include="Migrations\202105122020588_AddPropsForRoomAvailability.Designer.cs">
+      <DependentUpon>202105122020588_AddPropsForRoomAvailability.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservation.cs" />
@@ -157,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105121641093_AddReservation.resx">
       <DependentUpon>202105121641093_AddReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105122020588_AddPropsForRoomAvailability.resx">
+      <DependentUpon>202105122020588_AddPropsForRoomAvailability.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
