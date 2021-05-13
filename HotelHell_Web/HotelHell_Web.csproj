@@ -258,6 +258,7 @@
     <Content Include="Views\Reservation\Create.cshtml" />
     <Content Include="Views\Reservation\Edit.cshtml" />
     <Content Include="Views\Reservation\Delete.cshtml" />
+    <Content Include="Views\Room\HotelRoomsIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

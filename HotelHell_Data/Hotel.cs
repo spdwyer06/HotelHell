@@ -41,6 +41,22 @@ namespace HotelHell_Data
         public DateTimeOffset? ModifiedAt { get; set; }
 
 
+        public int NumRoomsAvail
+        {
+            get
+            {
+                var availableRooms = new List<Room>();
+
+                foreach (var room in Rooms)
+                {
+                    if (room.Available)
+                        availableRooms.Add(room);
+                }
+
+                return availableRooms.Count;
+            }
+        }
+
         public virtual ICollection<Room> Rooms { get; set; }
     }
 }

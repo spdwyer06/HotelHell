@@ -53,6 +53,23 @@ namespace HotelHell_Services
             }
         }
 
+        public IEnumerable<RoomListItem> GetAllRoomsForHotel(int hotelId)
+        {
+            using(var db = new ApplicationDbContext())
+            {
+                var query = db.Rooms.Where(room => room.HotelId == hotelId)
+                                    .Select(room => new RoomListItem
+                                    {
+                                        Id = room.Id,
+                                        HotelName = room.Hotel.Name,
+                                        NumOfBeds = room.NumOfBeds,
+                                        Available = room.Available
+                                    });
+
+                return query.ToArray();
+            }
+        }
+
         public async Task<RoomDetail> GetRoomByIdAsync(int roomId)
         {
             using (var db = new ApplicationDbContext())

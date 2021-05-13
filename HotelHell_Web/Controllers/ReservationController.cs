@@ -37,8 +37,8 @@ namespace HotelHell_Web.Controllers
         // GET: Reservation/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(_db.Customers, "Id", "Id");
-            ViewBag.RoomId = new SelectList(_db.Rooms, "Id", "Id");
+            //ViewBag.CustomerId = new SelectList(_db.Customers, "Id", "Id");
+            //ViewBag.RoomId = new SelectList(_db.Rooms, "Id", "Id");
 
             return View();
         }

@@ -16,5 +16,7 @@ namespace HotelHell_Models.Room
 
         [Display(Name = "Number Of Beds")]
         public int NumOfBeds { get; set; }
+
+        public bool Available { get; set; }
     }
 }

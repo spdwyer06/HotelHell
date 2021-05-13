@@ -25,6 +25,14 @@ namespace HotelHell_Web.Controllers
             return View(model);
         }
 
+        public ActionResult HotelRoomsIndex(int hotelId)
+        {
+            var service = CreateRoomService();
+            var model = service.GetAllRoomsForHotel(hotelId);
+
+            return View(model);
+        }
+
         // GET: Room/Details/5
         public async Task<ActionResult> Details(int roomId)
         {
@@ -38,8 +46,8 @@ namespace HotelHell_Web.Controllers
         //[Authorize(Roles = "Admin, Manager")]
         public ActionResult Create()
         {
-            ViewBag.HotelId = new SelectList(_db.Hotels, "Id", "Id");
-            ViewBag.HotelName = new SelectList(_db.Hotels, "Name", "Name");
+            //ViewBag.HotelId = new SelectList(_db.Hotels, "Id", "Id");
+            //ViewBag.HotelName = new SelectList(_db.Hotels, "Name", "Name");
 
             return View();
 
