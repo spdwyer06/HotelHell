@@ -169,7 +169,8 @@ namespace HotelHell_Services
 
         private string CapitalizeHotelName(string hotelName)
         {
-            var words = hotelName.Split(' ');
+            var baseName = hotelName.ToLower();
+            var words = baseName.Split(' ');
             var capName = "";
 
             foreach (var word in words)
