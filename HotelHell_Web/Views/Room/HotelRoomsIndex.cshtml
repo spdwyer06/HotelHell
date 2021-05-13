@@ -4,16 +4,16 @@
     ViewBag.Title = "HotelRoomsIndex";
 }
 
-<h2>HotelRoomsIndex</h2>
+<h2>Rooms At @ViewBag.HotelName</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.HotelName)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.NumOfBeds)
         </th>
@@ -23,19 +23,19 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.HotelName)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.NumOfBeds)
             </td>
             @if (item.Available) { 
                 @*<td>@Html.ActionLink("Reserve Room")</td>*@
-                <td>blarg</td>
+                <td>Room Available</td>
             }
                 else
                 {
-                    <td>Not available</td>
+                    <td>Not Available</td>
                 }
 
             @*<td>

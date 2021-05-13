@@ -42,9 +42,12 @@ namespace HotelHell_Services
 
         public async Task<bool> CreateHotelAsync(HotelCreate model)
         {
+            //var hotelName = char.ToUpper(model.Name[0]) + model.Name.Substring(1);
+            var hotelName = CapitalizeHotelName(model.Name);
+
             var hotel = new Hotel
             {
-                Name = model.Name,
+                Name = hotelName,
                 BuildingNumber = model.BuildingNumber,
                 StreetAddress = model.StreetAddress,
                 City = model.City,
@@ -160,6 +163,22 @@ namespace HotelHell_Services
 
                 return await db.SaveChangesAsync() == 1;
             }
+        }
+
+
+
+        private string CapitalizeHotelName(string hotelName)
+        {
+            var words = hotelName.Split(' ');
+            var capName = "";
+
+            foreach (var word in words)
+                capName += char.ToUpper(word[0]) + word.Substring(1) + " ";
+            //{
+            //    capName += char.ToUpper(word[0]) + word.Substring(1) + " ";
+            //}
+
+            return capName.Trim();
         }
     }
 }

@@ -25,10 +25,15 @@ namespace HotelHell_Web.Controllers
             return View(model);
         }
 
-        public ActionResult HotelRoomsIndex(int hotelId)
+        public async Task<ActionResult> HotelRoomsIndex(int hotelId)
         {
             var service = CreateRoomService();
             var model = service.GetAllRoomsForHotel(hotelId);
+            var hotel = await _db.Hotels.FindAsync(hotelId);
+
+            ViewBag.HotelName = hotel.Name;
+            TempData["HotelName"] = hotel.Name;
+            ViewData["Hotel"] = hotel.Name;
 
             return View(model);
         }
