@@ -50,7 +50,6 @@ namespace HotelHell_Services
                 City = model.City,
                 State = model.State,
                 ZipCode = model.ZipCode,
-                NumOfRoomsAvail = model.NumOfRoomsAvail,
                 CreatedAt = DateTimeOffset.UtcNow
             };
 
@@ -66,12 +65,34 @@ namespace HotelHell_Services
         {
             using (var db = new ApplicationDbContext())
             {
-                var query = db.Hotels.Select(hotel => new HotelListItem
+                var query = db.Hotels.ToList().Select(hotel => new HotelListItem
                 {
                     Id = hotel.Id,
                     Name = hotel.Name,
-                    AnyVacancies = hotel.NumOfRoomsAvail > 0
+                    //AnyVacancies = hotel.NumRooms > 0
+                    //NumOfRoomsAvail = hotel.NumOfRoomsAvail
+                    AnyVacancies = hotel.AnyVacancies
+                    //AnyVacancies = hotel.NumOfRoomsAvail > 0
                 });
+                //.ToList().Where(hotel => hotel.AnyVacancies == true);
+
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<HotelListItem> GetAllHotelsWithVacancies()
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var query = db.Hotels.Where(hotel => hotel.AnyVacancies)
+                                     .Select(hotel => new HotelListItem
+                                     {
+                                         Id = hotel.Id,
+                                         Name = hotel.Name,
+                                         NumOfRoomsAvail = hotel.NumOfRoomsAvail
+                                         //AnyVacancies = hotel.AnyVacancies
+                                         //AnyVacancies = hotel.NumOfRoomsAvail > 0
+                                     });
 
                 return query.ToArray();
             }
@@ -97,7 +118,6 @@ namespace HotelHell_Services
                     ZipCode = hotel.ZipCode,
                     NumOfRoomsAvail = hotel.NumOfRoomsAvail,
                     AnyVacancies = hotel.AnyVacancies,
-                    NumRoomsAvail = hotel.NumRoomsAvail,
                     CreatedAt = hotel.CreatedAt,
                     ModifiedAt = hotel.ModifiedAt,
                     Rooms = hotel.Rooms
@@ -121,7 +141,6 @@ namespace HotelHell_Services
                 hotel.City = model.City;
                 hotel.State = model.State;
                 hotel.ZipCode = model.ZipCode;
-                hotel.NumOfRoomsAvail = model.NumOfRoomsAvail;
                 hotel.ModifiedAt = DateTimeOffset.UtcNow;
 
                 return await db.SaveChangesAsync() == 1;

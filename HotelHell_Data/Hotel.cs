@@ -30,18 +30,7 @@ namespace HotelHell_Data
         [Required]
         public int ZipCode { get; set; }
 
-        [Required]
-        public int NumOfRoomsAvail { get; set; }
-
-        public bool AnyVacancies => NumOfRoomsAvail > 0;
-
-        [Required]
-        public DateTimeOffset CreatedAt { get; set; }
-
-        public DateTimeOffset? ModifiedAt { get; set; }
-
-
-        public int NumRoomsAvail
+        public int NumOfRoomsAvail
         {
             get
             {
@@ -56,6 +45,21 @@ namespace HotelHell_Data
                 return availableRooms.Count;
             }
         }
+
+        public bool AnyVacancies => NumOfRoomsAvail > 0;
+
+        [Required]
+        public DateTimeOffset CreatedAt { get; set; }
+
+        public DateTimeOffset? ModifiedAt { get; set; }
+
+        //public int NumRooms
+        //{
+        //    get
+        //    {
+        //        return Rooms.Select(room => room.Available).ToList().Count;
+        //    }
+        //}
 
         public virtual ICollection<Room> Rooms { get; set; }
     }

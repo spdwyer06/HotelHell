@@ -8,7 +8,7 @@
 
 <div>
     <h4>HotelDetail</h4>
-    @Html.ActionLink("View Rooms", "RedirectToHotelRooms" , new { hotelId = Model.Id })
+    @Html.ActionLink("View Rooms", "RedirectToHotelRooms", new { hotelId = Model.Id })
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -84,14 +84,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NumRoomsAvail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumRoomsAvail)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.CreatedAt)
         </dt>
 
@@ -116,12 +108,12 @@
         </dd>
 
         @*<dt>
-            @Html.DisplayNameFor(model => model.Rooms.SingleOrDefault().RoomNumber)
-        </dt>
+                @Html.DisplayNameFor(model => model.Rooms.SingleOrDefault().RoomNumber)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Rooms.SingleOrDefault().RoomNumber)
-        </dd>*@
+            <dd>
+                @Html.DisplayFor(model => model.Rooms.SingleOrDefault().RoomNumber)
+            </dd>*@
 
         <dt>
             Room Numbers
@@ -132,8 +124,8 @@
         @foreach (var room in Model.Rooms)
         {
             @*<dd>
-                @Html.DisplayFor(model => model.Rooms.Count)
-            </dd>*@
+                    @Html.DisplayFor(model => model.Rooms.Count)
+                </dd>*@
 
             <dd>
                 @room.RoomNumber
@@ -151,3 +143,21 @@
     @Html.ActionLink("Edit", "Edit", new { hotelId = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@*@Html.ActionLink("Create Room", "Create", "Room", new { hotelId = Model.Id })*@
+
+@*<input type="button" id="btnRedirect" value="Redirect" onclick="window.location.href('@Url.Action("Create", "Login")')" />
+    <input type="button" id="btnRedirect" value="Create Redirect" onclick="Redirect" />*@
+@*<input type="button" id="btnRedirect" value="New Redirect" onclick="@{Response.Redirect("~/Room/Create");}" />*@
+@*@{Response.Redirect("~/Room/Create")}*@
+
+@*<script type="text/javascript">
+        function Redirect() {
+            @{Response.Redirect("~/Room/Create");}
+        }
+    $(function(){
+      $("#btnRedirect").click(function(){
+        window.location.href = "@Url.Action("Create","Room")";
+      });
+    });
+    </script>*@

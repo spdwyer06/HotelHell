@@ -30,8 +30,5 @@ namespace HotelHell_Models.Hotel
         [Range(10000, 99999, ErrorMessage = "Enter a 5 digit zip code.")]
         [DataType(DataType.PostalCode, ErrorMessage = "Enter 5 digit zip code")]
         public int ZipCode { get; set; }
-
-        [Display(Name = "Number Of Rooms Available")]
-        public int NumOfRoomsAvail { get; set; }
     }
 }
