@@ -14,6 +14,8 @@ namespace HotelHell_Models.Hotel
         [Display(Name = "Hotel Name")]
         public string Name { get; set; }
 
+        public bool IsFavorite { get; set; }
+
         [Display(Name = "Building Number")]
         public int BuildingNumber { get; set; }
 

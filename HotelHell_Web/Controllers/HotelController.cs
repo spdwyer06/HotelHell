@@ -180,9 +180,9 @@ namespace HotelHell_Web.Controllers
             return RedirectToAction("Create", "Room", new { hotelId });
         }
 
-        public ActionResult RedirectToHotelRooms(int hotelId)
+        public ActionResult RedirectToHotelRooms(int hotelId, string hotelName)
         {
-            return RedirectToAction("HotelRoomsIndex", "Room", new { hotelId });
+            return RedirectToAction("HotelRoomsIndex", "Room", new { hotelId, hotelName });
         }
 
 

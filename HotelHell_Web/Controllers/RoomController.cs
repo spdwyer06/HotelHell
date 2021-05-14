@@ -25,15 +25,12 @@ namespace HotelHell_Web.Controllers
             return View(model);
         }
 
-        public async Task<ActionResult> HotelRoomsIndex(int hotelId)
+        public ActionResult HotelRoomsIndex(int hotelId, string hotelName)
         {
             var service = CreateRoomService();
             var model = service.GetAllRoomsForHotel(hotelId);
-            var hotel = await _db.Hotels.FindAsync(hotelId);
 
-            ViewBag.HotelName = hotel.Name;
-            TempData["HotelName"] = hotel.Name;
-            ViewData["Hotel"] = hotel.Name;
+            ViewBag.HotelName = hotelName;
 
             return View(model);
         }
@@ -172,7 +169,10 @@ namespace HotelHell_Web.Controllers
             }
         }
 
-
+        public ActionResult ReserveRoom(int roomId)
+        {
+            return RedirectToAction("Create", "Reservation", new { roomId });
+        }
 
         private RoomService CreateRoomService()
         {

@@ -74,7 +74,8 @@ namespace HotelHell_Services
                     Name = hotel.Name,
                     //AnyVacancies = hotel.NumRooms > 0
                     //NumOfRoomsAvail = hotel.NumOfRoomsAvail
-                    AnyVacancies = hotel.AnyVacancies
+                    AnyVacancies = hotel.AnyVacancies,
+                    IsFavorite = hotel.IsFavorite
                     //AnyVacancies = hotel.NumOfRoomsAvail > 0
                 });
                 //.ToList().Where(hotel => hotel.AnyVacancies == true);
@@ -139,6 +140,7 @@ namespace HotelHell_Services
                     return false;
 
                 hotel.Name = model.Name;
+                hotel.IsFavorite = model.IsFavorite;
                 hotel.BuildingNumber = model.BuildingNumber;
                 hotel.StreetAddress = model.StreetAddress;
                 hotel.City = model.City;
