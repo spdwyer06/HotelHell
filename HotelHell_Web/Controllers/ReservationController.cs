@@ -53,6 +53,9 @@ namespace HotelHell_Web.Controllers
                 if (!ModelState.IsValid)
                     return View(model);
 
+                if (model.CheckInDate.Date > model.CheckOutDate.Date)
+                    return View(model);
+
                 var service = CreateReservationService();
 
                 if (!await service.CreateReservationAsync(model))
@@ -79,7 +82,9 @@ namespace HotelHell_Web.Controllers
             {
                 Id = reservation.Id,
                 CustomerId = reservation.CustomerId,
-                RoomId = reservation.RoomId
+                RoomId = reservation.RoomId,
+                CheckInDate = reservation.CheckInDate,
+                CheckOutDate = reservation.CheckOutDate
             };
 
 

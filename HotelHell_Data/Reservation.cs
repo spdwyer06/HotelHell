@@ -20,5 +20,11 @@ namespace HotelHell_Data
         [ForeignKey(nameof(Customer))]
         public int CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
+
+        [Required]
+        public DateTime CheckInDate { get; set; }
+
+        [Required]
+        public DateTime CheckOutDate { get; set; }
     }
 }

@@ -133,6 +133,14 @@
     <Compile Include="Migrations\202105141532195_AddFavoriteOptionToHotel.Designer.cs">
       <DependentUpon>202105141532195_AddFavoriteOptionToHotel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105190110004_AddReservationDateProp.cs" />
+    <Compile Include="Migrations\202105190110004_AddReservationDateProp.Designer.cs">
+      <DependentUpon>202105190110004_AddReservationDateProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105190111560_AddCheckOutProp.cs" />
+    <Compile Include="Migrations\202105190111560_AddCheckOutProp.Designer.cs">
+      <DependentUpon>202105190111560_AddCheckOutProp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reservation.cs" />
@@ -190,6 +198,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105141532195_AddFavoriteOptionToHotel.resx">
       <DependentUpon>202105141532195_AddFavoriteOptionToHotel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105190110004_AddReservationDateProp.resx">
+      <DependentUpon>202105190110004_AddReservationDateProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105190111560_AddCheckOutProp.resx">
+      <DependentUpon>202105190111560_AddCheckOutProp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
