@@ -14,6 +14,9 @@ namespace HotelHell_Models.Room
         [Display(Name = "Hotel Name")]
         public string HotelName { get; set; }
 
+        [Display(Name = "Room Number")]
+        public int RoomNumber { get; set; }
+
         [Display(Name = "Number Of Beds")]
         public int NumOfBeds { get; set; }
 

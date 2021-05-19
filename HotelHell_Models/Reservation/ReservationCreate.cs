@@ -16,5 +16,13 @@ namespace HotelHell_Models.Reservation
         [Required]
         [Display(Name = "Customer Id")]
         public int CustomerId { get; set; }
+
+        [Display(Name = "Check In Date"), DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime CheckInDate { get; set; }
+
+        [Display(Name = "Check Out Date"), DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime CheckOutDate { get; set; }
     }
 }

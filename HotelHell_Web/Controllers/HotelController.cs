@@ -22,6 +22,15 @@ namespace HotelHell_Web.Controllers
             return View(model);
         }
 
+        // GET ALL HOTELS WITH VACANCIES
+        //public ActionResult Index()
+        //{
+        //    var service = CreateHotelService();
+        //    var model = service.GetAllHotelsWithVacancies();
+
+        //    return View(model);
+        //}
+
         // GET: Hotel/Details/5
         public async Task<ActionResult> Details(int hotelId)
         {
@@ -99,7 +108,6 @@ namespace HotelHell_Web.Controllers
                 City = hotel.City,
                 State = hotel.State,
                 ZipCode = hotel.ZipCode,
-                NumOfRoomsAvail = hotel.NumOfRoomsAvail,
             };
 
             return View(model);
@@ -172,9 +180,9 @@ namespace HotelHell_Web.Controllers
             return RedirectToAction("Create", "Room", new { hotelId });
         }
 
-        public ActionResult RedirectToHotelRooms(int hotelId)
+        public ActionResult RedirectToHotelRooms(int hotelId, string hotelName)
         {
-            return RedirectToAction("HotelRoomsIndex", "Room", new { hotelId });
+            return RedirectToAction("HotelRoomsIndex", "Room", new { hotelId, hotelName });
         }
 
 

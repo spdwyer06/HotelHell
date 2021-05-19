@@ -59,9 +59,26 @@
             @Html.DisplayFor(model => model.RoomId)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckInDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckInDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckOutDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckOutDate)
+        </dd>
+
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">

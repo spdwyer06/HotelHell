@@ -19,5 +19,9 @@ namespace HotelHell_Models.Hotel
 
         [Display(Name = "Any Vacancies?")]
         public bool AnyVacancies { get; set; }
+
+        [UIHint("Starred")]
+        [Display(Name = "Liked?")]
+        public bool IsFavorite { get; set; }
     }
 }

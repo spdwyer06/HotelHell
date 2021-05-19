@@ -55,13 +55,14 @@ namespace HotelHell_Services
 
         public IEnumerable<RoomListItem> GetAllRoomsForHotel(int hotelId)
         {
-            using(var db = new ApplicationDbContext())
+            using (var db = new ApplicationDbContext())
             {
                 var query = db.Rooms.Where(room => room.HotelId == hotelId)
                                     .Select(room => new RoomListItem
                                     {
                                         Id = room.Id,
                                         HotelName = room.Hotel.Name,
+                                        RoomNumber = room.RoomNumber,
                                         NumOfBeds = room.NumOfBeds,
                                         Available = room.Available
                                     });

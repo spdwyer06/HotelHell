@@ -14,6 +14,8 @@ namespace HotelHell_Models.Hotel
         [Display(Name = "Hotel Name")]
         public string Name { get; set; }
 
+        public bool IsFavorite { get; set; }
+
         [Display(Name = "Building Number")]
         public int BuildingNumber { get; set; }
 
@@ -30,8 +32,5 @@ namespace HotelHell_Models.Hotel
         [Range(10000, 99999, ErrorMessage = "Enter a 5 digit zip code.")]
         [DataType(DataType.PostalCode, ErrorMessage = "Enter 5 digit zip code")]
         public int ZipCode { get; set; }
-
-        [Display(Name = "Number Of Rooms Available")]
-        public int NumOfRoomsAvail { get; set; }
     }
 }

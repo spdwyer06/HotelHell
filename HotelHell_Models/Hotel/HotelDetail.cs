@@ -34,8 +34,6 @@ namespace HotelHell_Models.Hotel
         [Display(Name = "Any Vacancies?")]
         public bool AnyVacancies { get; set; }
 
-        public int NumRoomsAvail { get; set; }
-
         [Display(Name = "Created At")]
         public DateTimeOffset CreatedAt { get; set; }
 

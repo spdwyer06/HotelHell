@@ -4,7 +4,7 @@
     ViewBag.Title = "HotelRoomsIndex";
 }
 
-<h2>HotelRoomsIndex</h2>
+<h2>Rooms At @ViewBag.HotelName</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.HotelName)
+            @Html.DisplayNameFor(model => model.RoomNumber)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NumOfBeds)
@@ -24,25 +24,28 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.HotelName)
+                @Html.DisplayFor(modelItem => item.RoomNumber)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NumOfBeds)
             </td>
-            @if (item.Available) { 
-                @*<td>@Html.ActionLink("Reserve Room")</td>*@
-                <td>blarg</td>
+            @if (item.Available)
+            {
+                @*<td>Room Available</td>*@
+                <td>
+                    @Html.ActionLink("Reserve Room", "ReserveRoom", new { roomId = item.Id })
+                </td>
             }
-                else
-                {
-                    <td>Not available</td>
-                }
+            else
+            {
+                <td>Not Available</td>
+            }
 
             @*<td>
-                @Html.ActionLink("Edit", "Edit", new { roomId = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { roomId = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { roomId = item.Id })
-            </td>*@
+                    @Html.ActionLink("Edit", "Edit", new { roomId = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { roomId = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { roomId = item.Id })
+                </td>*@
         </tr>
     }
 

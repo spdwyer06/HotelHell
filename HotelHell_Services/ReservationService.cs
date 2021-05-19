@@ -23,7 +23,9 @@ namespace HotelHell_Services
             var reservation = new Reservation
             {
                 CustomerId = model.CustomerId,
-                RoomId = model.RoomId
+                RoomId = model.RoomId,
+                CheckInDate = model.CheckInDate,
+                CheckOutDate = model.CheckOutDate
             };
 
             using (var db = new ApplicationDbContext())
@@ -49,7 +51,8 @@ namespace HotelHell_Services
                     HotelName = reservation.Room.Hotel.Name,
                     RoomNumber = reservation.Room.RoomNumber,
                     CustomerFirstName = reservation.Customer.FirstName,
-                    CustomerLastName = reservation.Customer.LastName
+                    CustomerLastName = reservation.Customer.LastName,
+                    CheckInDate = reservation.CheckInDate
                 });
 
                 return query.ToArray();
@@ -73,7 +76,9 @@ namespace HotelHell_Services
                     RoomNumber = reservation.Room.RoomNumber,
                     CustomerId = reservation.CustomerId,
                     CustomerFirstName = reservation.Customer.FirstName,
-                    CustomerLastName = reservation.Customer.LastName
+                    CustomerLastName = reservation.Customer.LastName,
+                    CheckInDate = reservation.CheckInDate,
+                    CheckOutDate = reservation.CheckOutDate
                 };
             }
         }
@@ -89,6 +94,8 @@ namespace HotelHell_Services
 
                 reservation.CustomerId = model.CustomerId;
                 reservation.RoomId = model.RoomId;
+                reservation.CheckInDate = model.CheckInDate;
+                reservation.CheckOutDate = model.CheckOutDate;
 
                 return await db.SaveChangesAsync() == 1;
             }

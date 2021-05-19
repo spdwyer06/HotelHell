@@ -22,5 +22,9 @@ namespace HotelHell_Models.Reservation
 
         [Display(Name = "Customer Last Name")]
         public string CustomerLastName { get; set; }
+
+        [Display(Name = "Check In Date"), DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime CheckInDate { get; set; }
     }
 }

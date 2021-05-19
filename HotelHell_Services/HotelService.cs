@@ -42,15 +42,17 @@ namespace HotelHell_Services
 
         public async Task<bool> CreateHotelAsync(HotelCreate model)
         {
+            //var hotelName = char.ToUpper(model.Name[0]) + model.Name.Substring(1);
+            var hotelName = CapitalizeHotelName(model.Name);
+
             var hotel = new Hotel
             {
-                Name = model.Name,
+                Name = hotelName,
                 BuildingNumber = model.BuildingNumber,
                 StreetAddress = model.StreetAddress,
                 City = model.City,
                 State = model.State,
                 ZipCode = model.ZipCode,
-                NumOfRoomsAvail = model.NumOfRoomsAvail,
                 CreatedAt = DateTimeOffset.UtcNow
             };
 
@@ -66,12 +68,35 @@ namespace HotelHell_Services
         {
             using (var db = new ApplicationDbContext())
             {
-                var query = db.Hotels.Select(hotel => new HotelListItem
+                var query = db.Hotels.ToList().Select(hotel => new HotelListItem
                 {
                     Id = hotel.Id,
                     Name = hotel.Name,
-                    AnyVacancies = hotel.NumOfRoomsAvail > 0
+                    //AnyVacancies = hotel.NumRooms > 0
+                    //NumOfRoomsAvail = hotel.NumOfRoomsAvail
+                    AnyVacancies = hotel.AnyVacancies,
+                    IsFavorite = hotel.IsFavorite
+                    //AnyVacancies = hotel.NumOfRoomsAvail > 0
                 });
+                //.ToList().Where(hotel => hotel.AnyVacancies == true);
+
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<HotelListItem> GetAllHotelsWithVacancies()
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var query = db.Hotels.Where(hotel => hotel.AnyVacancies)
+                                     .Select(hotel => new HotelListItem
+                                     {
+                                         Id = hotel.Id,
+                                         Name = hotel.Name,
+                                         NumOfRoomsAvail = hotel.NumOfRoomsAvail
+                                         //AnyVacancies = hotel.AnyVacancies
+                                         //AnyVacancies = hotel.NumOfRoomsAvail > 0
+                                     });
 
                 return query.ToArray();
             }
@@ -97,7 +122,6 @@ namespace HotelHell_Services
                     ZipCode = hotel.ZipCode,
                     NumOfRoomsAvail = hotel.NumOfRoomsAvail,
                     AnyVacancies = hotel.AnyVacancies,
-                    NumRoomsAvail = hotel.NumRoomsAvail,
                     CreatedAt = hotel.CreatedAt,
                     ModifiedAt = hotel.ModifiedAt,
                     Rooms = hotel.Rooms
@@ -116,12 +140,12 @@ namespace HotelHell_Services
                     return false;
 
                 hotel.Name = model.Name;
+                hotel.IsFavorite = model.IsFavorite;
                 hotel.BuildingNumber = model.BuildingNumber;
                 hotel.StreetAddress = model.StreetAddress;
                 hotel.City = model.City;
                 hotel.State = model.State;
                 hotel.ZipCode = model.ZipCode;
-                hotel.NumOfRoomsAvail = model.NumOfRoomsAvail;
                 hotel.ModifiedAt = DateTimeOffset.UtcNow;
 
                 return await db.SaveChangesAsync() == 1;
@@ -141,6 +165,23 @@ namespace HotelHell_Services
 
                 return await db.SaveChangesAsync() == 1;
             }
+        }
+
+
+
+        private string CapitalizeHotelName(string hotelName)
+        {
+            var baseName = hotelName.ToLower();
+            var words = baseName.Split(' ');
+            var capName = "";
+
+            foreach (var word in words)
+                capName += char.ToUpper(word[0]) + word.Substring(1) + " ";
+            //{
+            //    capName += char.ToUpper(word[0]) + word.Substring(1) + " ";
+            //}
+
+            return capName.Trim();
         }
     }
 }
