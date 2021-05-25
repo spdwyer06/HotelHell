@@ -1,6 +1,7 @@
 ﻿using HotelHell_Data;
 using HotelHell_Models.Reservation;
 using HotelHell_Services;
+using HotelHell_Web.CustomAttributes;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -51,12 +52,19 @@ namespace HotelHell_Web.Controllers
         }
 
         // GET: Reservation/Create
+        [AuthorizeRole(Roles = "Employee")]
         public ActionResult Create()
         {
             //ViewBag.CustomerId = new SelectList(_db.Customers, "Id", "Id");
             //ViewBag.RoomId = new SelectList(_db.Rooms, "Id", "Id");
-
-            return View();
+            try
+            {
+                return View();
+            }
+            catch (Exception e)
+            {
+                return View("Unauthorized");
+            }
         }
 
         // POST: Reservation/Create

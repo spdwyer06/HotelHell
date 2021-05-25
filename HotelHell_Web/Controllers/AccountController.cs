@@ -53,6 +53,12 @@ namespace HotelHell_Web.Controllers
             }
         }
 
+        [AllowAnonymous]
+        public ActionResult Unauthorized()
+        {
+            return View("Unauthorized");
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
