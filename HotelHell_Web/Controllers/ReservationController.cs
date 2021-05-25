@@ -12,13 +12,29 @@ using System.Web.Mvc;
 namespace HotelHell_Web.Controllers
 {
     [Authorize]
+    // Be of Role Admin OR Manager
+    //[Authorize(Roles = "Admin,Manager")]
+    // Be of Role Admin AND Manager
+    //[Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Manager")]
     public class ReservationController : Controller
     {
         private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Reservation
+        [Authorize(Roles = "Admin,Manager,Customer")]
         public ActionResult Index()
         {
+            if (User.IsInRole("Admin"))
+            {
+                // Do Admin stuff
+            }
+            else if (User.IsInRole("Manager"))
+            {
+                // Do Manager stuff
+            }
+            // Do Customer stuff
+
             var service = CreateReservationService();
             var model = service.GetAllReservations();
 

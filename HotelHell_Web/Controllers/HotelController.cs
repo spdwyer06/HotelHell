@@ -95,6 +95,7 @@ namespace HotelHell_Web.Controllers
         }
 
         // GET: Hotel/Edit/5
+        //[Authorize(Roles = "Admin,Manager")]
         public async Task<ActionResult> Edit(int hotelId)
         {
             var service = CreateHotelService();
