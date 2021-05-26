@@ -184,11 +184,14 @@
     <Compile Include="Controllers\HotelController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReservationController.cs" />
+    <Compile Include="Controllers\UserRoleController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
+    <Compile Include="CustomAttributes\AuthorizeRole.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ApplicationUserModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -271,9 +274,12 @@
     <Content Include="Views\Reservation\Delete.cshtml" />
     <Content Include="Views\Room\HotelRoomsIndex.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Starred.cshtml" />
+    <Content Include="Views\Shared\Unauthorized.cshtml" />
+    <Content Include="Views\UserRole\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Role\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

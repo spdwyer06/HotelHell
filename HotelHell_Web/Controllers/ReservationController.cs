@@ -1,6 +1,7 @@
 ﻿using HotelHell_Data;
 using HotelHell_Models.Reservation;
 using HotelHell_Services;
+using HotelHell_Web.CustomAttributes;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,29 @@ using System.Web.Mvc;
 namespace HotelHell_Web.Controllers
 {
     [Authorize]
+    // Be of Role Admin OR Manager
+    //[Authorize(Roles = "Admin,Manager")]
+    // Be of Role Admin AND Manager
+    //[Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Manager")]
     public class ReservationController : Controller
     {
         private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Reservation
+        [Authorize(Roles = "Admin,Manager,Customer")]
         public ActionResult Index()
         {
+            if (User.IsInRole("Admin"))
+            {
+                // Do Admin stuff
+            }
+            else if (User.IsInRole("Manager"))
+            {
+                // Do Manager stuff
+            }
+            // Do Customer stuff
+
             var service = CreateReservationService();
             var model = service.GetAllReservations();
 
@@ -35,12 +52,22 @@ namespace HotelHell_Web.Controllers
         }
 
         // GET: Reservation/Create
+        [AuthorizeRole(Roles = "Employee")]
         public ActionResult Create()
         {
+            return View();
+
             //ViewBag.CustomerId = new SelectList(_db.Customers, "Id", "Id");
             //ViewBag.RoomId = new SelectList(_db.Rooms, "Id", "Id");
 
-            return View();
+            //try
+            //{
+            //    return View();
+            //}
+            //catch (Exception e)
+            //{
+            //    return View("Unauthorized");
+            //}
         }
 
         // POST: Reservation/Create

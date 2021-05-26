@@ -1,0 +1,5 @@
+﻿INSERT INTO dbo.IdentityRole (Id, [Name])
+VALUES (NEWID(), 'Admin')
+	, (NEWID(), 'Manager')
+	, (NEWID(), 'Employee')
+	, (NEWID(), 'Customer')
