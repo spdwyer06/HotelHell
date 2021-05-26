@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>User Role</h2>
+
+@foreach (var user in ViewBag.UserRoles)
+{
+    <h2>@user.Email</h2>
+    <h1>@user.RoleList</h1>
+}

@@ -55,16 +55,19 @@ namespace HotelHell_Web.Controllers
         [AuthorizeRole(Roles = "Employee")]
         public ActionResult Create()
         {
+            return View();
+
             //ViewBag.CustomerId = new SelectList(_db.Customers, "Id", "Id");
             //ViewBag.RoomId = new SelectList(_db.Rooms, "Id", "Id");
-            try
-            {
-                return View();
-            }
-            catch (Exception e)
-            {
-                return View("Unauthorized");
-            }
+
+            //try
+            //{
+            //    return View();
+            //}
+            //catch (Exception e)
+            //{
+            //    return View("Unauthorized");
+            //}
         }
 
         // POST: Reservation/Create
