@@ -49,6 +49,7 @@ namespace HotelHell_Web.Controllers
 
 
         [AuthorizeRole(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             ViewBag.UserRoles = GetAllUsers();
