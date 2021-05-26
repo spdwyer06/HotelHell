@@ -17,6 +17,11 @@ namespace HotelHell_Web.Controllers.Api
     {
         private async Task<bool> SetStarStateAsync(int noteId, bool newState)
         {
+            if (RequestContext.Principal.IsInRole("Admin"))
+            {
+                // Do admin stuff
+            }
+
             // Create the service
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new HotelService(userId);
