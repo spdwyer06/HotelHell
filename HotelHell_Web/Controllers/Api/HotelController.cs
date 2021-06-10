@@ -15,7 +15,7 @@ namespace HotelHell_Web.Controllers.Api
     [RoutePrefix("api/Hotel")]
     public class HotelController : ApiController
     {
-        private async Task<bool> SetStarStateAsync(int noteId, bool newState)
+        private async Task<bool> SetStarStateAsync(int hotelId, bool newState)
         {
             if (RequestContext.Principal.IsInRole("Admin"))
             {
@@ -26,10 +26,10 @@ namespace HotelHell_Web.Controllers.Api
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new HotelService(userId);
 
-            // Get the note
-            var detail = await service.GetHotelByIdAsync(noteId);
+            // Get the hotel
+            var detail = await service.GetHotelByIdAsync(hotelId);
 
-            // Create the NoteEdit model with new star state
+            // Create the HotelEdit model with new star state
             var updatedHotel = new HotelEdit
             {
                 Id = detail.Id,

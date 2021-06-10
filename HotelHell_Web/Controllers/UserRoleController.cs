@@ -1,4 +1,5 @@
 ﻿using HotelHell_Data;
+using HotelHell_Models.UserRole;
 using HotelHell_Web.CustomAttributes;
 using HotelHell_Web.Models;
 using Microsoft.AspNet.Identity;
@@ -14,7 +15,8 @@ namespace HotelHell_Web.Controllers
     [Authorize]
     public class UserRoleController : Controller
     {
-        // Move this to UserRoleService
+        // Move methods to UserRoleService
+        [Authorize(Roles = "Admin, Manager")]
         public List<ApplicationUserModel> GetAllUsers()
         {
             var output = new List<ApplicationUserModel>();
@@ -47,6 +49,48 @@ namespace HotelHell_Web.Controllers
             return output;
         }
 
+        [Authorize(Roles = "Admin")]
+        public Dictionary<string, string> GetAllRoles()
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                //var roles = db.Roles.ToList();
+
+                // Creating a dicionary with the Key being the Role Id and the Value being Role Name
+                var roles = db.Roles.ToDictionary(role => role.Id, role => role.Name);
+
+                return roles;
+            }
+        }
+
+
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public void AddRole(UserRoleModel model)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var userStore = new UserStore<ApplicationUser>(db);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+
+                userManager.AddToRole(model.UserId, model.RoleName);
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public void RemoveRole(UserRoleModel model)
+        {
+            using (var db = new ApplicationDbContext())
+            {
+                var userStore = new UserStore<ApplicationUser>(db);
+                var userManager = new UserManager<ApplicationUser>(userStore);
+
+                userManager.RemoveFromRole(model.UserId, model.RoleName);
+            }
+        }
 
         [AuthorizeRole(Roles = "Admin")]
         //[Authorize(Roles = "Admin")]
